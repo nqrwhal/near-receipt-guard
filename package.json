@@ -1,0 +1,14 @@
+{
+  "name": "near-receipt-guard-local",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "cargo-near": "^0.23.0",
+    "near-api-js": "^5.1.0",
+    "near-workspaces": "5.0.0"
+  }
+}

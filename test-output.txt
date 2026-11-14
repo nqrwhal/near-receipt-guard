@@ -1,0 +1,65 @@
+
+> near-receipt-guard-local@0.1.0 test
+> node --test test/*.test.js
+
+TAP version 13
+# Subtest: local NEAR agent spending guard
+    # Subtest: allowed payment uses scoped key and moves local funds
+    ok 1 - allowed payment uses scoped key and moves local funds
+      ---
+      duration_ms: 1819.598394
+      type: 'test'
+      ...
+# Receipt: 6WwugHV9GLrG4dSPSWV31fmMFoCopMrqoo7sxgm7TZJd
+# \\tFailure [dev-51990-19904.test.near]: Error: {"index":0,"kind":{"index":0,"kind":{"FunctionCallError":{"ExecutionError":"Smart contract panicked: per-call limit exceeded"}}}}
+# Receipt: BTSH5GWUrGrXgwD6avWUUUjvJAGkKGvkqAgJ5S112D8m
+# \\tFailure [dev-51990-19904.test.near]: Error: {"index":0,"kind":{"index":0,"kind":{"FunctionCallError":{"ExecutionError":"Smart contract panicked: receiver blocked"}}}}
+    # Subtest: over-cap and blocked receiver fail on chain
+    ok 2 - over-cap and blocked receiver fail on chain
+      ---
+      duration_ms: 2422.270847
+      type: 'test'
+      ...
+# Receipt: Ha8jT6bDdcrKGf5PfXKcgEYPY2Z8nNzirNJYHwbctWTi
+# \\tFailure [dev-51990-19904.test.near]: Error: {"index":0,"kind":{"index":0,"kind":{"FunctionCallError":{"ExecutionError":"Smart contract panicked: nonce replay"}}}}
+    # Subtest: nonce replay fails on chain
+    ok 3 - nonce replay fails on chain
+      ---
+      duration_ms: 1213.392486
+      type: 'test'
+      ...
+    # Subtest: mutation is rejected before signer is invoked
+    ok 4 - mutation is rejected before signer is invoked
+      ---
+      duration_ms: 5.725609
+      type: 'test'
+      ...
+# Receipt: EfWAUJLuJySPddyCwn3VsmfoUgzBkJKin9nE1BTrWPei
+# \\tFailure [dev-51990-19904.test.near]: Error: {"index":0,"kind":{"index":0,"kind":{"FunctionCallError":{"ExecutionError":"Smart contract panicked: daily limit exceeded"}}}}
+    # Subtest: daily cap fails after two allowed payments
+    ok 5 - daily cap fails after two allowed payments
+      ---
+      duration_ms: 3022.018015
+      type: 'test'
+      ...
+    # Subtest: scoped key cannot make a direct transfer
+    ok 6 - scoped key cannot make a direct transfer
+      ---
+      duration_ms: 16.318439
+      type: 'test'
+      ...
+    1..6
+ok 1 - local NEAR agent spending guard
+  ---
+  duration_ms: 15875.002962
+  type: 'test'
+  ...
+1..1
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16016.943178
